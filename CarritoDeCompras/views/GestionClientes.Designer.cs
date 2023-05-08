@@ -39,6 +39,7 @@
             label3 = new Label();
             txtTarjeta = new TextBox();
             label4 = new Label();
+            button1 = new Button();
             SuspendLayout();
             // 
             // listCientes
@@ -134,11 +135,22 @@
             label4.TabIndex = 9;
             label4.Text = "Tarjeta de credito:";
             // 
+            // button1
+            // 
+            button1.Location = new Point(528, 239);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 11;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // GestionClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(txtTarjeta);
             Controls.Add(label4);
             Controls.Add(txtTelefono);
@@ -169,5 +181,6 @@
         private Label label3;
         private TextBox txtTarjeta;
         private Label label4;
+        private Button button1;
     }
 }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CarritoDeCompras.dao;
+using CarritoDeCompras.entities;
 
 namespace CarritoDeCompras
 {
@@ -35,6 +37,12 @@ namespace CarritoDeCompras
         {
             int item = listCientes.SelectedIndex;
             listCientes.Items.RemoveAt(item);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClienteDao dataBase = new ClienteDao();
+            dataBase.Connect();
         }
     }
 }
