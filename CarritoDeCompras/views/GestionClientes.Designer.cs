@@ -39,21 +39,21 @@
             label3 = new Label();
             txtTarjeta = new TextBox();
             label4 = new Label();
-            button1 = new Button();
+            btnEditar = new Button();
             SuspendLayout();
             // 
             // listCientes
             // 
             listCientes.FormattingEnabled = true;
             listCientes.ItemHeight = 15;
-            listCientes.Location = new Point(12, -2);
+            listCientes.Location = new Point(12, 13);
             listCientes.Name = "listCientes";
-            listCientes.Size = new Size(272, 409);
+            listCientes.Size = new Size(272, 394);
             listCientes.TabIndex = 0;
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(502, 170);
+            btnGuardar.Location = new Point(465, 156);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(75, 23);
             btnGuardar.TabIndex = 1;
@@ -135,22 +135,22 @@
             label4.TabIndex = 9;
             label4.Text = "Tarjeta de credito:";
             // 
-            // button1
+            // btnEditar
             // 
-            button1.Location = new Point(528, 239);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 11;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btnEditar.Location = new Point(12, 415);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(75, 23);
+            btnEditar.TabIndex = 11;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Click += btnEditar_Click;
             // 
             // GestionClientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            Controls.Add(btnEditar);
             Controls.Add(txtTarjeta);
             Controls.Add(label4);
             Controls.Add(txtTelefono);
@@ -164,6 +164,7 @@
             Controls.Add(listCientes);
             Name = "GestionClientes";
             Text = "Form2";
+            Load += GestionClientes_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -181,6 +182,6 @@
         private Label label3;
         private TextBox txtTarjeta;
         private Label label4;
-        private Button button1;
+        private Button btnEditar;
     }
 }

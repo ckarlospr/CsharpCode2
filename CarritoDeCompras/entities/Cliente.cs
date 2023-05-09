@@ -8,6 +8,7 @@ namespace CarritoDeCompras.entities
 {
     internal class Cliente
     {
+        public string id { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Tlefono { get; set; }

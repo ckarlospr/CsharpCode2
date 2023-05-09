@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using CarritoDeCompras.dao;
 using CarritoDeCompras.entities;
+using MySqlX.XDevAPI;
 
 namespace CarritoDeCompras
 {
@@ -19,30 +20,66 @@ namespace CarritoDeCompras
             InitializeComponent();
         }
 
+        string clienteID = "0";
+
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             Cliente cliente = new Cliente();
+            cliente.id = clienteID;
             cliente.Nombre = txtNombre.Text;
             cliente.Apellido = txtApellido.Text;
             cliente.Tarjeta = txtTarjeta.Text;
             cliente.Tlefono = txtTelefono.Text;
 
-
-
-            String nombre = txtNombre.Text;
-            listCientes.Items.Add(cliente);
+            ClienteDao dataBase = new ClienteDao();
+            dataBase.saveCliente(cliente);
+            updateList();
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            int item = listCientes.SelectedIndex;
-            listCientes.Items.RemoveAt(item);
+            Cliente cliente = (Cliente)listCientes.SelectedItem;
+
+            ClienteDao dataBase = new ClienteDao();
+            dataBase.deleteCliente(cliente);
+            updateList();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void GestionClientes_Load(object sender, EventArgs e)
         {
+            updateList();
+        }
+
+        private void updateList()
+        {
+            listCientes.Items.Clear();
             ClienteDao dataBase = new ClienteDao();
-            dataBase.Connect();
+            List<Cliente> clienteListdb = dataBase.getClienteList();
+            foreach (Cliente cliente in clienteListdb)
+            {
+                listCientes.Items.Add(cliente);
+            }
+            clearData();
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = (Cliente)listCientes.SelectedItem;
+            clienteID = cliente.id;
+            txtNombre.Text = cliente.Nombre;
+            txtApellido.Text = cliente.Apellido;
+            txtTelefono.Text = cliente.Tlefono;
+            txtTarjeta.Text = cliente.Tarjeta;
+        }
+
+        private void clearData()
+        {
+            clienteID = "0";
+            txtNombre.Text = "";
+            txtApellido.Text = "";
+            txtTelefono.Text = "";
+            txtTarjeta.Text = "";
         }
     }
 }
